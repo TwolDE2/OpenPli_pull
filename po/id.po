@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-02 10:56+0200\n"
+"POT-Creation-Date: 2019-09-07 13:00+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Budiarno Pedode\n"
 "Language-Team: \n"
@@ -3689,6 +3689,10 @@ msgstr "URL penggunaan rx dari jauh"
 msgid "Fallback tuner setup"
 msgstr "URL penggunaan rx dari jauh"
 
+#, fuzzy
+msgid "False"
+msgstr "salah"
+
 #, python-format
 msgid "Fan %d"
 msgstr "Kipas %d"
@@ -3855,8 +3859,8 @@ msgstr "Jum"
 msgid "Friday"
 msgstr "Jum'at"
 
-msgid "From :"
-msgstr "Dari :"
+msgid "From:"
+msgstr "Dari:"
 
 #, python-format
 msgid "Frontprocessor version: %s"
@@ -3983,8 +3987,8 @@ msgstr "Menuju"
 msgid "Goto 0"
 msgstr "Menuju 0"
 
-msgid "Goto :"
-msgstr "Menuju :"
+msgid "Goto:"
+msgstr "Menuju:"
 
 msgid "Goto X"
 msgstr "Menuju X"
@@ -8989,8 +8993,8 @@ msgstr "Bidang ini memungkinkan anda mencari symbol rate tambahan sampai %s"
 
 msgid ""
 "This info is for developers only.\n"
-"For a normal users it is not relevant.\n"
-"Don't panic please when you see values being displayed that you think look suspicious!"
+"For normal users it is not relevant.\n"
+"Please don't panic if you see values displayed looking suspicious!"
 msgstr ""
 "Ini untuk pengembang saja.\n"
 "Bagi pengguna normal ia nya tidak relevan.\n"
@@ -9391,6 +9395,9 @@ msgid "Trinidad and Tobago"
 msgstr ""
 
 msgid "Troubleshoot"
+msgstr ""
+
+msgid "True"
 msgstr ""
 
 msgid "Try to find used transponders in cable network.. please wait..."

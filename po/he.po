@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tuxbox-enigma 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-02 10:56+0200\n"
+"POT-Creation-Date: 2019-09-07 13:00+0200\n"
 "PO-Revision-Date: 2012-03-08 10:40+0330\n"
 "Last-Translator: \n"
 "Language-Team: Arabic <moustafagamal@hotmail.com>\n"
@@ -3848,6 +3848,9 @@ msgstr ""
 msgid "Fallback tuner setup"
 msgstr ""
 
+msgid "False"
+msgstr ""
+
 #
 #, python-format
 msgid "Fan %d"
@@ -4030,7 +4033,7 @@ msgstr "Fri"
 msgid "Friday"
 msgstr "שישי"
 
-msgid "From :"
+msgid "From:"
 msgstr ""
 
 #, python-format
@@ -4170,7 +4173,7 @@ msgstr ""
 msgid "Goto 0"
 msgstr "Goto 0"
 
-msgid "Goto :"
+msgid "Goto:"
 msgstr ""
 
 msgid "Goto X"
@@ -10033,6 +10036,9 @@ msgid "Trinidad and Tobago"
 msgstr ""
 
 msgid "Troubleshoot"
+msgstr ""
+
+msgid "True"
 msgstr ""
 
 msgid "Try to find used transponders in cable network.. please wait..."

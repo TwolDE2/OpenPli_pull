@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-02 10:56+0200\n"
+"POT-Creation-Date: 2019-09-07 13:00+0200\n"
 "PO-Revision-Date: 2011-04-14 00:02+0200\n"
 "Last-Translator: majevica <jovanovic@gmx.ch>\n"
 "Language-Team: veselin & majevica CRNABERZA <jovanovic@gmx.ch>\n"
@@ -4160,6 +4160,9 @@ msgstr ""
 msgid "Fallback tuner setup"
 msgstr ""
 
+msgid "False"
+msgstr ""
+
 #
 #, python-format
 msgid "Fan %d"
@@ -4355,7 +4358,7 @@ msgstr "Pet"
 msgid "Friday"
 msgstr "Petak"
 
-msgid "From :"
+msgid "From:"
 msgstr ""
 
 #, python-format
@@ -4505,7 +4508,7 @@ msgstr ""
 msgid "Goto 0"
 msgstr "Pođi do 0"
 
-msgid "Goto :"
+msgid "Goto:"
 msgstr ""
 
 msgid "Goto X"
@@ -10771,6 +10774,9 @@ msgid "Trinidad and Tobago"
 msgstr ""
 
 msgid "Troubleshoot"
+msgstr ""
+
+msgid "True"
 msgstr ""
 
 #

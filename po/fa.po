@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-02 10:56+0200\n"
+"POT-Creation-Date: 2019-09-07 13:00+0200\n"
 "PO-Revision-Date: 2018-02-14 16:51+0330\n"
 "Last-Translator: Persian Prince <persianprince@pe4k.com>\n"
 "Language-Team: Persian Professionals <persianpros@yahoo.com>\n"
@@ -3685,6 +3685,9 @@ msgstr ""
 msgid "Fallback tuner setup"
 msgstr ""
 
+msgid "False"
+msgstr ""
+
 #, python-format
 msgid "Fan %d"
 msgstr "فن %d"
@@ -3851,8 +3854,8 @@ msgstr "جمعه"
 msgid "Friday"
 msgstr "جمعه"
 
-msgid "From :"
-msgstr "از :"
+msgid "From:"
+msgstr "از:"
 
 #, python-format
 msgid "Frontprocessor version: %s"
@@ -3986,8 +3989,8 @@ msgstr "مراجعه به"
 msgid "Goto 0"
 msgstr "مراجعه به 0"
 
-msgid "Goto :"
-msgstr "مراجعه به :"
+msgid "Goto:"
+msgstr "مراجعه به:"
 
 msgid "Goto X"
 msgstr "مراجعه به X"
@@ -9446,6 +9449,9 @@ msgid "Trinidad and Tobago"
 msgstr ""
 
 msgid "Troubleshoot"
+msgstr ""
+
+msgid "True"
 msgstr ""
 
 msgid "Try to find used transponders in cable network.. please wait..."

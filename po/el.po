@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenPLI Enigma2 Official Greek Translation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-02 10:56+0200\n"
+"POT-Creation-Date: 2019-09-07 13:00+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: MCelliotG <mcelliotg@gmail.com>\n"
 "Language-Team: MCelliotG <mcelliotg@gmail.com>\n"
@@ -3614,6 +3614,10 @@ msgstr "Ρυθμίσεις απομακρυσμένου εφεδρικού δέ�
 msgid "Fallback tuner setup"
 msgstr "Ρυθμίσεις εφεδρικού tuner"
 
+#, fuzzy
+msgid "False"
+msgstr "ψευδές"
+
 #, python-format
 msgid "Fan %d"
 msgstr "Ανεμιστήρας %d"
@@ -3775,8 +3779,8 @@ msgstr "Παρ"
 msgid "Friday"
 msgstr "Παρασκευή"
 
-msgid "From :"
-msgstr "Από :"
+msgid "From:"
+msgstr "Από:"
 
 #, python-format
 msgid "Frontprocessor version: %s"
@@ -3899,8 +3903,8 @@ msgstr "Μετάβαση"
 msgid "Goto 0"
 msgstr "Μετάβαση στο 0"
 
-msgid "Goto :"
-msgstr "Προς :"
+msgid "Goto:"
+msgstr "Προς:"
 
 msgid "Goto X"
 msgstr "Μετάβαση στη θέση Χ"
@@ -8785,12 +8789,12 @@ msgstr "Αυτό το πεδίο επιτρέπει την αναζήτηση ε
 
 msgid ""
 "This info is for developers only.\n"
-"For a normal users it is not relevant.\n"
-"Don't panic please when you see values being displayed that you think look suspicious!"
+"For normal users it is not relevant.\n"
+"Please don't panic if you see values displayed looking suspicious!"
 msgstr ""
-"Πληροφορία μόνο για προγραμματιστές.\n"
+"Πληροφορίες μόνο για προγραμματιστές.\n"
 "Δεν αφορά κοινούς χρήστες.\n"
-"Παρακαλούμε μη πανικοβάλλεστε όταν βλέπετε να απεικονίζονται τιμές που σας φαίνονται ύποπτες!"
+"Παρακαλούμε μην πανικοβληθείτε αν οι απεικονιζόμενες τιμές φαίνονται ύποπτες!"
 
 msgid "This is a multitype tuner. Available options depend on the hardware."
 msgstr "Αυτό είναι ένα tuner πολλαπλών τύπων. Οι διαθέσιμες επιλογές εξαρτώνται από το υλικό."
@@ -9185,6 +9189,9 @@ msgstr "Τρινιντάντ και Τομπάγκο"
 
 msgid "Troubleshoot"
 msgstr "Αντιμετώπιση προβλημάτων"
+
+msgid "True"
+msgstr ""
 
 msgid "Try to find used transponders in cable network.. please wait..."
 msgstr "Αναζήτηση χρησιμοποιούμενων αναμεταδοτών στο καλωδιακό δίκτυο... Παρακαλώ περιμένετε..."
