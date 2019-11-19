@@ -79,7 +79,7 @@ class Harddisk:
 		if self.type == DEVTYPE_UDEV:
 			self.dev_path = '/dev/' + self.device
 			self.disk_path = self.dev_path
-			self.card = "sdhci" in self.phys_path
+			self.card = "sdhci" in self.phys_path or "mmc" in self.device
 
 		elif self.type == DEVTYPE_DEVFS:
 			tmp = readFile(self.sysfsPath('dev')).split(':')
@@ -99,7 +99,7 @@ class Harddisk:
 			self.card = self.device[:2] == "hd" and "host0" not in self.dev_path
 
 		print "[Harddisk] new device", self.device, '->', self.dev_path, '->', self.disk_path
-		if not removable and not self.card:
+		if (self.internal or not removable) and not self.card:
 			self.startIdle()
 
 	def __lt__(self, ob):
@@ -582,7 +582,7 @@ class HarddiskManager:
 			("/media/hdd", _("Hard disk")),
 			("/media/card", _("Card")),
 			("/media/cf", _("Compact flash")),
-			("/media/mmc1", _("MMC card")),
+			("/media/mmc", _("MMC card")),
 			("/media/net", _("Network mount")),
 			("/media/net1", _("Network mount %s") % ("1")),
 			("/media/net2", _("Network mount %s") % ("2")),
@@ -602,15 +602,28 @@ class HarddiskManager:
 		removable = False
 		blacklisted = False
 		is_cdrom = False
+		bootdevice = None
 		partitions = []
 		try:
+			if os.path.exists('/dev/root'):
+				bootdevice = os.readlink('/dev/root')
 			if os.path.exists(devpath + "/removable"):
 				removable = bool(int(readFile(devpath + "/removable")))
 			if os.path.exists(devpath + "/dev"):
-				dev = int(readFile(devpath + "/dev").split(':')[0])
+				dev = readFile(devpath + "/dev")
+				subdev = int(dev.split(':')[1])
+				dev = int(dev.split(':')[0])
 			else:
 				dev = None
-			blacklisted = dev in [1, 7, 31, 253, 254] + (SystemInfo["HasMMC"] and [179] or []) #ram, loop, mtdblock, romblock, ramzswap, mmc
+				subdev = None
+			# blacklist ram, loop, mtdblock, romblock, ramzswap
+			blacklisted = dev in [1, 7, 31, 253, 254] 
+			# blacklist non-root eMMC devices
+			if not blacklisted and dev == 179:
+				if  subdev != 0:
+					blacklisted = True
+				elif bootdevice.startswith(blockdev):
+					blacklisted = True
 			if blockdev[0:2] == 'sr':
 				is_cdrom = True
 			if blockdev[0:2] == 'hd':
