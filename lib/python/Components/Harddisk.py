@@ -609,18 +609,22 @@ class HarddiskManager:
 				removable = bool(int(readFile(devpath + "/removable")))
 			if os.path.exists(devpath + "/dev"):
 				dev = readFile(devpath + "/dev")
+				subdev1 = int(dev.split(':')[1])
 				subdev = False if int(dev.split(':')[1]) % 32 == 0 else True
 				dev = int(dev.split(':')[0])
 			else:
 				dev = None
 				subdev = False
+				subdev1 = None
 			# blacklist ram, loop, mtdblock, romblock, ramzswap
 			blacklisted = dev in [1, 7, 31, 253, 254] 
 			# blacklist non-root eMMC devices
+			print "Harddisk1 #### blacklist = %s dev = %s subdev1 = %s subdev = %s Bootdevice = %s blockdevice = %s" %(blacklisted, dev, subdev1, subdev, SystemInfo['BootDevice'], blockdev) 
 			if not blacklisted and dev == 179:
 				is_mmc = True
 				if (SystemInfo['BootDevice'] and SystemInfo['BootDevice'].startswith(blockdev)) or subdev:
 					blacklisted = True
+				print "Harddisk2 #### blacklist = %s dev = %s subdev1 = %s subdev = %s Bootdevice = %s blockdevice = %s" %(blacklisted, dev, subdev1, subdev, SystemInfo['BootDevice'], blockdev) 
 			if blockdev[0:2] == 'sr':
 				is_cdrom = True
 			if blockdev[0:2] == 'hd':
