@@ -622,6 +622,8 @@ class HarddiskManager:
 			print "Harddisk1 #### blacklist = %s dev = %s subdev1 = %s subdev = %s Bootdevice = %s blockdevice = %s" %(blacklisted, dev, subdev1, subdev, SystemInfo['BootDevice'], blockdev) 
 			if not blacklisted and dev == 179:
 				is_mmc = True
+				if (SystemInfo['BootDevice'] and SystemInfo['BootDevice'].startswith("sda")):
+					blacklisted = True
 				if (SystemInfo['BootDevice'] and blockdev.startswith(SystemInfo['BootDevice'])) or subdev:
 					blacklisted = True
 				print "Harddisk2 #### blacklist = %s dev = %s subdev1 = %s subdev = %s Bootdevice = %s blockdevice = %s" %(blacklisted, dev, subdev1, subdev, SystemInfo['BootDevice'], blockdev) 
