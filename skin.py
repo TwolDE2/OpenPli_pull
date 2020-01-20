@@ -14,14 +14,13 @@ from Tools.Directories import SCOPE_CONFIG, SCOPE_CURRENT_LCDSKIN, SCOPE_CURRENT
 from Tools.Import import my_import
 from Tools.LoadPixmap import LoadPixmap
 
-DEFAULT_SKIN = SystemInfo["HasFullHDSkinSupport"] and "PLi-FullNightHD/skin.xml" or "PLi-HD/skin.xml"  # On SD hardware PLi-HD will not be available.
-DEFAULT_SD_SKIN = "Magic/skin.xml"
+DEFAULT_SKIN = SystemInfo["HasFullHDSkinSupport"] and "PLi-FullNightHD/skin.xml" or "PLi-HD/skin.xml"  # SD hardware is no longer supported by the default skin.
 EMERGENCY_SKIN = "skin_default.xml"
 DEFAULT_DISPLAY_SKIN = "skin_display.xml"
 USER_SKIN = "skin_user.xml"
 USER_SKIN_TEMPLATE = "skin_user_%s.xml"
-BOX_SKIN = "skin_box.xml"  # DEBUG: Is this actually used?
-SECOND_INFOBAR_SKIN = "skin_second_infobar.xml"  # DEBUG: Is this actually used?
+# BOX_SKIN = "skin_box.xml"  # DEBUG: Is this actually used?
+# SECOND_INFOBAR_SKIN = "skin_second_infobar.xml"  # DEBUG: Is this actually used?
 SUBTITLE_SKIN = "skin_subtitles.xml"
 
 GUI_SKIN_ID = 0  # Main frame-buffer.
@@ -55,16 +54,10 @@ fonts = {  # Dictionary of predefined and skin defined font aliases.
 # E.g. "MySkin/skin_display.xml"
 #
 config.skin = ConfigSubsection()
-# On SD hardware, DEFAULT_SKIN will not be available.
 skin = resolveFilename(SCOPE_SKIN, DEFAULT_SKIN)
 if not fileExists(skin) or not os.path.isfile(skin):
-	# In that case, fallback to the DEFAULT_SD_SKIN.
-	DEFAULT_SKIN = DEFAULT_SD_SKIN
-	print "[Skin] Error: Default HD skin '%s' is not readable or is not a file!  Using default SD skin." % skin
-	skin = resolveFilename(SCOPE_SKIN, DEFAULT_SKIN)
-	if not fileExists(skin) or not os.path.isfile(skin):
-		DEFAULT_SKIN = "skin.xml"
-		print "[Skin] Error: Default SD skin '%s' is not also readable or is not a file!  Using emergency skin." % skin
+	print "[Skin] Error: Default skin '%s' is not readable or is not a file!  Using emergency skin." % skin
+	DEFAULT_SKIN = EMERGENCY_SKIN
 config.skin.primary_skin = ConfigText(default=DEFAULT_SKIN)
 config.skin.display_skin = ConfigText(default=DEFAULT_DISPLAY_SKIN)
 
@@ -385,10 +378,10 @@ class AttributeParser:
 		else:
 			self.guiObject.resize(parseSize(value, self.scaleTuple, self.guiObject, self.desktop))
 
-# OpenPLi is missing the C++ code to support these animation methods.
-#
-# 	def animationPaused(self, value):
-# 		pass
+	def animationPaused(self, value):
+		pass
+
+# OpenPLi is missing the C++ code to support this animation method.
 #
 # 	def animationMode(self, value):
 # 		try:
@@ -460,7 +453,8 @@ class AttributeParser:
 			print "[Skin] Error: Invalid alphatest '%s'!  Must be one of 'on', 'off' or 'blend'." % value
 
 	def scale(self, value):
-		self.guiObject.setScale(1)
+		value = 1 if value.lower() in ("1", "enabled", "on", "scale", "true", "yes") else 0
+		self.guiObject.setScale(value)
 
 	def orientation(self, value):  # used by eSlider
 		try:
@@ -578,7 +572,8 @@ class AttributeParser:
 			print "[Skin] Error: Invalid scrollbarMode '%s'!  Must be one of 'showOnDemand', 'showAlways', 'showNever' or 'showLeft'." % value
 
 	def enableWrapAround(self, value):
-		self.guiObject.setWrapAround(True)
+		value = True if value.lower() in ("1", "enabled", "enablewraparound", "on", "true", "yes") else False
+		self.guiObject.setWrapAround(value)
 
 	def itemHeight(self, value):
 		self.guiObject.setItemHeight(int(value))
@@ -599,7 +594,8 @@ class AttributeParser:
 		self.guiObject.setShadowOffset(parsePosition(value, self.scaleTuple))
 
 	def noWrap(self, value):
-		self.guiObject.setNoWrap(1)
+		value = 1 if value.lower() in ("1", "enabled", "nowrap", "on", "true", "yes") else 0
+		self.guiObject.setNoWrap(value)
 
 def applySingleAttribute(guiObject, desktop, attrib, value, scale=((1, 1), (1, 1))):
 	# Is anyone still using applySingleAttribute?
