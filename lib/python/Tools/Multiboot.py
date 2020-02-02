@@ -6,7 +6,10 @@ TMP_MOUNT = '/tmp/multibootcheck'
 
 def getMultibootStartupDevice(model):
 	for device in ('/dev/block/by-name/bootoptions', '/dev/block/by-name/bootoptions', "/dev/mmcblk1p1" if model in ('osmio4k', 'osmio4kplus', 'osmini4k') else "/dev/mmcblk0p1"):
+		print "Multiboot getMultibootStartupDevice = %s " %device
+		x = os.path.exists(device)
 		if os.path.exists(device):
+			print "Multiboot getMultibootStartupDevice PATH is True? = %s%s " %(device, x)
 			return device
 
 def getparam(line, param):
@@ -14,18 +17,24 @@ def getparam(line, param):
 
 def getMultibootslots():
 	bootslots = {}
+	print "Multiboot getMultibootslots MultibootStartupDevice = %s " %SystemInfo["MultibootStartupDevice"]
 	if SystemInfo["MultibootStartupDevice"]:
 		if not os.path.isdir(TMP_MOUNT):
 			os.mkdir(TMP_MOUNT)
 		postix = PosixSpawn()
 		postix.execute('mount %s %s' % (SystemInfo["MultibootStartupDevice"], TMP_MOUNT))
 		for file in glob.glob('%s/STARTUP_*' % TMP_MOUNT):
+			print "Multiboot getMultibootslots file = %s " %file
 			slotnumber = file.rsplit('_', 3 if 'BOXMODE' in file else 1)[1]
+			print "Multiboot getMultibootslots slotnumber = %s " %slotnumber
 			if slotnumber.isdigit() and slotnumber not in bootslots:
 				slot = {}
 				for line in open(file).readlines():
+					print "Multiboot getMultibootslots readlines = %s " %line
 					if 'root=' in line:
+						print "Multiboot getMultibootslots root in line " 
 						device = getparam(line, 'root')
+						print "Multiboot getMultibootslots device = %s " %device
 						if os.path.exists(device):
 							slot['device'] = device
 							slot['startupfile'] = os.path.basename(file).split('_BOXMODE')[0]
@@ -34,9 +43,10 @@ def getMultibootslots():
 						break
 				if slot:
 					bootslots[int(slotnumber)] = slot
-		postix.execute('umount %s' % TMP_MOUNT)
-		if not os.path.ismount(TMP_MOUNT):
-			os.rmdir(TMP_MOUNT)
+					print "Multiboot getMultibootslots bootslots = %s, slot = %s" %(bootslots, slot)
+#		postix.execute('umount %s' % TMP_MOUNT)
+#		if not os.path.ismount(TMP_MOUNT):
+#			os.rmdir(TMP_MOUNT)
 	return bootslots
 
 def GetCurrentImage():
