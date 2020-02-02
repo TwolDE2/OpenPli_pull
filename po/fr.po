@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-11 19:39+0200\n"
-"PO-Revision-Date: 2019-11-18 19:06+0100\n"
+"POT-Creation-Date: 2020-01-31 14:53+0200\n"
+"PO-Revision-Date: 2020-02-01 14:31+0100\n"
 "Last-Translator: Pr2\n"
 "Language-Team: french\n"
 "Language: fr\n"
@@ -462,6 +462,9 @@ msgstr "16:9 Letterbox"
 msgid "16:9 always"
 msgstr "16:9 toujours"
 
+msgid "16K"
+msgstr "16K"
+
 msgid "18 V"
 msgstr "18 V"
 
@@ -522,6 +525,9 @@ msgstr "4:3 Letterbox"
 msgid "4:3 PanScan"
 msgstr "4:3 PanScan"
 
+msgid "4K"
+msgstr "4K"
+
 msgid "5"
 msgstr "5"
 
@@ -537,6 +543,9 @@ msgstr "7"
 msgid "8"
 msgstr "8"
 
+msgid "8K"
+msgstr "8K"
+
 msgid "8bit"
 msgstr "8bit"
 
@@ -546,11 +555,23 @@ msgstr "9"
 msgid ": 0000 - default (disabled)"
 msgstr ": 0000 - par défaut (désactivé)"
 
+msgid "< Current >"
+msgstr "< Actuel >"
+
+msgid "< Default + Picon >"
+msgstr "< Défaut + Picon >"
+
+msgid "< Default >"
+msgstr "< Défaut >"
+
+msgid "< Emergency >"
+msgstr "< Urgence >"
+
+msgid "< Pending restart >"
+msgstr "< En attente de redémarrage >"
+
 msgid "<Current movielist location>"
 msgstr "<Emplacement actuel de la liste des films>"
-
-msgid "<Default Skin>"
-msgstr "<Thème par défaut>"
 
 msgid "<Default movie location>"
 msgstr "<Emplacement par défaut des films>"
@@ -711,9 +732,6 @@ msgstr "Abandonner l'édition des favoris"
 
 msgid "About"
 msgstr "A propos"
-
-msgid "About..."
-msgstr "A propos..."
 
 msgid "Accesspoint:"
 msgstr "Point d'accès:"
@@ -1584,8 +1602,17 @@ msgstr "Canada"
 msgid "Cancel"
 msgstr "Annuler"
 
+msgid "Cancel any changes to the currently active skin"
+msgstr "Annuler tout changement à le thème/skin actuellement actif"
+
+msgid "Cancel any changes to the currently active skin and exit all menus"
+msgstr "Annuler toute modification du thème/skin actuellement actif et quitter tous les menus"
+
 msgid "Cancel any text changes and exit"
 msgstr "Annuler les modifications de texte et quitter"
+
+msgid "Cancel execution?"
+msgstr "Annuler l’exécution"
 
 msgid "Cancelled upon user request"
 msgstr "Annulé à la demande de l’utilisateur"
@@ -1872,7 +1899,7 @@ msgid "Composition of the recording filenames"
 msgstr "Composition noms de fichiers d'enregistrement"
 
 msgid "Compress"
-msgstr "Compresser"
+msgstr "Réduire"
 
 msgid "Config Scan Details"
 msgstr "Configurer les détails de la recherche"
@@ -1907,6 +1934,9 @@ msgstr "Configure un retard supplémentaire pour améliorer la synchronisation d
 
 msgid "Configure an additional delay to improve subtitle synchronisation."
 msgstr "Configure un retard supplémentaire pour améliorer la synchronisation des sous-titres."
+
+msgid "Configure default type for new timers."
+msgstr "Configurer le type par défaut des nouvelles programmations."
 
 msgid "Configure for how long the infobar will remain visible after activation."
 msgstr "Configure la durée d’affichage de la barre d’informations après activation."
@@ -2531,6 +2561,9 @@ msgstr "Emplacement standard des films"
 msgid "Default settings"
 msgstr "Paramètres par défaut"
 
+msgid "Default timer type"
+msgstr "Type de programmation par défaut"
+
 msgid "Define the location of the EPG Cache file."
 msgstr "Définir la localisation du fichier de cache EPG."
 
@@ -2774,6 +2807,9 @@ msgstr "Afficher les info EPG du service courant"
 msgid "Display EPG list for current channel"
 msgstr "Afficher la liste EPG de la chaîne actuelle"
 
+msgid "Display Skin"
+msgstr "Thème/Skin de l’affichage"
+
 msgid "Display and userinterface"
 msgstr "Affichage et interface utilisateur"
 
@@ -3015,6 +3051,9 @@ msgstr "Sélection EPG"
 msgid "EPG settings"
 msgstr "Paramètres EPG"
 
+msgid "EPG:"
+msgstr "EPG:"
+
 #, python-format
 msgid "ERROR - failed to scan (%s)!"
 msgstr "ERREUR - échec lors de la recherche (%s)!"
@@ -3239,9 +3278,6 @@ msgstr "Niveau de déboggage Enigma: %d\n"
 msgid "Enigma version: "
 msgstr "Version Enigma: "
 
-msgid "Enigma2 skin selector"
-msgstr "Sélecteur de thème/skin Enigma2"
-
 msgid "Enter"
 msgstr "Entrer"
 
@@ -3340,9 +3376,6 @@ msgid ""
 msgstr ""
 "Erreur lors de la décompression de l'image\n"
 "%s"
-
-msgid "Error executing plugin"
-msgstr "Erreur d'exécution de l'extension"
 
 msgid "Error stop stream!"
 msgstr "Erreur arrêt du stream (diffusion)!"
@@ -3568,6 +3601,9 @@ msgstr "FEC"
 
 msgid "FEC:"
 msgstr "FEC:"
+
+msgid "FHD"
+msgstr "FHD"
 
 msgid "FTA"
 msgstr "En clair"
@@ -3829,18 +3865,14 @@ msgstr "Version de GStreamer: "
 msgid "GUI Settings"
 msgstr "Paramètres de l’IGU"
 
+msgid "GUI Skin"
+msgstr "Théme/Skin de l’IGU"
+
 msgid ""
 "GUI needs a restart to apply a new language\n"
 "Do you want to restart the GUI now?"
 msgstr ""
 "L'interface doit redémarrer pour appliquer la nouvelle langue\n"
-"Voulez-vous relancer l'interface maintenant?"
-
-msgid ""
-"GUI needs a restart to apply a new skin\n"
-"Do you want to restart the GUI now?"
-msgstr ""
-"L'interface doit redémarrer pour appliquer ce thème\n"
 "Voulez-vous relancer l'interface maintenant?"
 
 msgid "Gabon"
@@ -3999,11 +4031,17 @@ msgstr "Guyane"
 msgid "H"
 msgstr "H"
 
+msgid "HD"
+msgstr "HD"
+
 msgid "HD list"
 msgstr "Liste HD"
 
 msgid "HD2400"
 msgstr "HD2400"
+
+msgid "HD60"
+msgstr "HD60"
 
 msgid "HDMI"
 msgstr "HDMI"
@@ -4477,9 +4515,6 @@ msgstr "Inversion, Pilot & Roll-off"
 msgid "Invert"
 msgstr "Inverser"
 
-msgid "Ipkg"
-msgstr "Ipkg"
-
 msgid "Iran (Islamic Republic of)"
 msgstr "Iran (République islamique d’)"
 
@@ -4892,6 +4927,13 @@ msgstr "Importation manuelle du tuner de repli"
 msgid "Manufacturer"
 msgstr "Constructeur"
 
+msgid ""
+"Manufacturer reset in progress\n"
+"Pease wait until enigma2 restarts"
+msgstr ""
+"Réinitialisation des valeurs par défaut en cours\n"
+"Attendre jusqu'à ce que enigma2 redémarre"
+
 msgid "Margin after recording (minutes)"
 msgstr "Marge après l'enregistrement (min)"
 
@@ -5084,6 +5126,18 @@ msgstr "Déplacez le curseur du clavier virtuel vers le haut"
 
 msgid "Move to position X"
 msgstr "Déplacer vers la position X"
+
+msgid "Move to the next page"
+msgstr "Basculer vers la page suivante"
+
+msgid "Move to the next skin"
+msgstr "Basculer vers le thème/skin suivant"
+
+msgid "Move to the previous page"
+msgstr "Basculer vers la page précédente"
+
+msgid "Move to the previous skin"
+msgstr "Basculer vers le thème/skin précédent"
 
 msgid "Move west"
 msgstr "Déplacer vers l'ouest"
@@ -5628,6 +5682,9 @@ msgstr "Ouvrir la configuration du tuner "
 
 msgid "Open the movie list"
 msgstr "Ouvrir la liste de films"
+
+msgid "Opkg"
+msgstr "Opkg"
 
 msgid "Options disable timer"
 msgstr "Options désactiver timer"
@@ -6242,8 +6299,9 @@ msgstr "Appuyez sur MENU de votre télécommande pour d'autres options."
 msgid "Press OK on your remote control to continue."
 msgstr "Appuyez sur OK de votre télécommande pour continuer."
 
-msgid "Press OK to activate the selected skin."
-msgstr "Appuyez sur OK pour activer le thème sélectionné."
+#, python-format
+msgid "Press OK to activate the selected%s skin."
+msgstr "Appuyez sur OK pour activer le thème sélectionné %s."
 
 msgid "Press OK to activate the settings."
 msgstr "Appuyez sur OK pour activer les paramètres."
@@ -6254,6 +6312,10 @@ msgstr "Appuyez sur OK pour éditer les paramètres."
 #, python-format
 msgid "Press OK to get further details for %s"
 msgstr "Appuyez sur OK pour avoir des détails sur %s"
+
+#, python-format
+msgid "Press OK to keep the currently selected%s skin."
+msgstr "Appuyez sur OK pour activer le thème sélectionné %s."
 
 msgid "Press OK to scan"
 msgstr "Appuyez sur OK pour lancer la recherche"
@@ -6439,6 +6501,9 @@ msgstr "Supprimer les programmations terminées?"
 
 msgid "Really exit the subservices quickzap?"
 msgstr "Voulez-vous vraiment quitter le zapping rapide?"
+
+msgid "Really perform a manufacturer reset now?"
+msgstr "Faire réellement une réinitialisation par défaut maintenant?"
 
 msgid "Really reboot now?"
 msgstr "Voulez-vous vraiment rebooter maintenant?"
@@ -6765,6 +6830,9 @@ msgstr "Restaurer"
 msgid "Restore backups"
 msgstr "Restaurer sauvegardes"
 
+msgid "Restore defaults"
+msgstr "Restorer les valeurs par défaut"
+
 msgid "Restore deleted user bouquets"
 msgstr "Restaurer les bouquets utilisateurs supprimés"
 
@@ -6985,6 +7053,9 @@ msgstr "Sauvegarder"
 
 msgid "Save / Enter text and exit"
 msgstr "Enregistrer/saisir du texte et quitter"
+
+msgid "Save and activate the currently selected skin"
+msgstr "Enregistrer et activer le thème/skin actuellement sélectionné"
 
 msgid "Save and exit"
 msgstr "Sauvegarder et quitter"
@@ -7434,9 +7505,6 @@ msgstr "Sélectionner l'interface sans fil"
 msgid "Select your ATSC provider."
 msgstr "Sélectionner votre opérateur ATSC"
 
-msgid "Select your Skin"
-msgstr "Sélectionnez votre thème (skin)"
-
 msgid ""
 "Select your backup device.\n"
 "Current device: "
@@ -7596,9 +7664,6 @@ msgstr "Définir les périodes de blocage par semaine"
 
 msgid "Set default"
 msgstr "Définir par défaut"
-
-msgid "Set default settings?"
-msgstr "Définir comme paramètre par défaut?"
 
 msgid "Set end time"
 msgstr "Régler l'heure de fin"
@@ -8017,12 +8082,15 @@ msgstr "Latitude du site"
 msgid "Site longitude"
 msgstr "Longitude du site"
 
-msgid "Skin"
-msgstr "Thème/Skin"
-
 #, python-format
 msgid "Skin & Resolution: %s (%sx%s)\n"
 msgstr "Thème & Résolution: %s (%sx%s)\n"
+
+msgid "Skin Selection Actions"
+msgstr "Actions de la sélection du thème/skin"
+
+msgid "SkinSelector: Restart GUI"
+msgstr "SkinSelector: Redémarrer IGU"
 
 msgid "Skins"
 msgstr "Thèmes/Skins"
@@ -8636,7 +8704,7 @@ msgstr ""
 "\n"
 "Traducteur: Pr2\n"
 "Support: www.openpli.org\n"
-"Dernière MAJ: 30-11-2019"
+"Dernière MAJ: 01-02-2020"
 
 msgid "TS file is too large for ISO9660 level 1!"
 msgstr "Fichier TS trop grand pour le niveau 1 ISO9660!"
@@ -8666,7 +8734,7 @@ msgid "Tags"
 msgstr "Etiquettes"
 
 msgid "Taiwan"
-msgstr ""
+msgstr "Taïwan"
 
 msgid "Tajikistan"
 msgstr "Tadjikistan"
@@ -9176,6 +9244,9 @@ msgstr "Sélection de programmation..."
 msgid "Timer type"
 msgstr "Type programmation"
 
+msgid "Timer:"
+msgstr "Programmation:"
+
 msgid "Timeshift"
 msgstr "PauseDirect"
 
@@ -9206,8 +9277,16 @@ msgstr "Propriétés titre"
 msgid "Titleset mode"
 msgstr "Mode jeu titre"
 
+#, python-format
+msgid "To apply the selected '%s' skin the GUI needs to restart. Would you like to restart the GUI now?"
+msgstr "Pour appliquer le thème/skin ‘%s’ sélectionné, l'interface graphique doit redémarrer. Souhaitez-vous redémarrer l'interface graphique maintenant?"
+
 msgid "To audio selection"
 msgstr "Vers sélection piste audio"
+
+#, python-format
+msgid "To save and apply the selected '%s' skin the GUI needs to restart. Would you like to save the selection and restart the GUI now?"
+msgstr "Pour enregistrer et appliquer le thème ' %s' sélectionné, l'interface graphique doit redémarrer. Souhaitez-vous enregistrer la sélection et redémarrer l'interface graphique maintenant?"
 
 msgid "To subtitle selection"
 msgstr "Vers sélection sous-titres"
@@ -10395,13 +10474,13 @@ msgid "You can remove this plugin."
 msgstr "Vous pouvez supprimer ce plugin."
 
 msgid "You can set how will be finished movieplayer with 'Exit' button."
-msgstr "Vous pouvez définir comment le lecteur de films terminera avec le bouton ‘Exit’"
+msgstr "Vous pouvez définir comment le lecteur de films terminera avec le bouton ‘Exit’."
 
 msgid "You can set selected directory as 'root' directory for movie player."
 msgstr "Vous pouvez choisir le répertoire ‘racine’ pour le lecteur de films."
 
 msgid "You can set sorting type for items in movielist."
-msgstr "Vous pouvez définir la méthode de tri dans la liste des films"
+msgstr "Vous pouvez définir la méthode de tri dans la liste des films."
 
 msgid "You cannot delete this!"
 msgstr "Vous ne pouvez pas supprimer ceci!"
@@ -10594,11 +10673,14 @@ msgstr "Zapper vers le timer de service %s comme PiP!"
 msgid "Zapped to timer service %s!"
 msgstr "Zapper vers le timer de service %s!"
 
-msgid "Zgemma H.S/H.2S/H.2H/H5/H7"
-msgstr "Zgemma H.S/H.2S/H.2H/H5/H7"
+msgid "Zgemma H.S/H.2S/H.2H/H5/H7(old model)"
+msgstr "Zgemma H.S/H.2S/H.2H/H5/H7(old model)"
 
-msgid "Zgemma H9/i55 Plus"
-msgstr "Zgemma H9/i55 Plus"
+msgid "Zgemma H7(new model)/H9(new model)/H9COMBO/H9TWIN/H10"
+msgstr "Zgemma H7(new model)/H9(new model)/H9COMBO/H9TWIN/H10"
+
+msgid "Zgemma H9(old model)/I55Plus"
+msgstr "Zgemma H9(old model)/I55Plus"
 
 msgid "Zgemma Star S/2S/H1/H2"
 msgstr "Zgemma Star S/2S/H1/H2"
@@ -10883,8 +10965,8 @@ msgstr "erreur pendant la recherche"
 msgid "et4000"
 msgstr "et4000"
 
-msgid "et5000/6000"
-msgstr "et5000/6000"
+msgid "et5000/et6000"
+msgstr "et5000/et6000"
 
 msgid "et8000/et10000"
 msgstr "et8000/et10000"
@@ -10892,8 +10974,8 @@ msgstr "et8000/et10000"
 msgid "et9000/et9100"
 msgstr "et9000/et9100"
 
-msgid "et9200/9500/6500"
-msgstr "et9200/9500/6500"
+msgid "et9200/et9500/et6500"
+msgstr "et9200/et9500/et6500"
 
 msgid "execute cuts (requires MovieCut plugin)"
 msgstr "exécuter les coupures (nécessite le plugin MovieCut)"
@@ -11484,6 +11566,9 @@ msgstr "Fichier modèle"
 msgid "tennis/squash"
 msgstr "Tennis/Squash"
 
+msgid "testing"
+msgstr "Travail en cours..."
+
 msgid "this bouquet is protected by a parental control pin"
 msgstr "ce bouquet est protégé par un PIN contrôle parental"
 
@@ -11603,9 +11688,6 @@ msgstr "avec nom du tuner"
 
 msgid "with_errors"
 msgstr "Avec_erreurs"
-
-msgid "testing"
-msgstr "Travail en cours..."
 
 msgid "xp1000"
 msgstr "xp1000"
