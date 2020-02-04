@@ -1,15 +1,16 @@
 from Components.SystemInfo import SystemInfo
-from Components.Console import Console, PosixSpawn
+from Components.Console import Console
 import os, glob
 
 TMP_MOUNT = '/tmp/multibootcheck'
 
 def getMultibootStartupDevice(model):
-	for device in ('/dev/block/by-name/bootoptions', '/dev/block/by-name/bootoptions', "/dev/mmcblk1p1" if model in ('osmio4k', 'osmio4kplus', 'osmini4k') else "/dev/mmcblk0p1"):
+	for device in ('/dev/block/by-name/bootoptions', '/dev/block/by-name/boot', "/dev/mmcblk1p1" if model in ('osmio4k', 'osmio4kplus', 'osmini4k') else "/dev/mmcblk0p1"):
 		if model in ('sf8008', 'sf8008m'):
 			device = "/dev/mmcblk0p3"
+		print "Multiboot getMultibootStartupDevice1 %s" %(device)
 		if os.path.exists(device):
-			print "Multiboot getMultibootStartupDevice %s" %(device)
+			print "Multiboot getMultibootStartupDevice2 %s" %(device)
 			return device
 
 def getparam(line, param):
@@ -21,8 +22,7 @@ def getMultibootslots():
 	if SystemInfo["MultibootStartupDevice"]:
 		if not os.path.isdir(TMP_MOUNT):
 			os.mkdir(TMP_MOUNT)
-		postix = PosixSpawn()
-		postix.execute('/bin/mount', [SystemInfo["MultibootStartupDevice"], TMP_MOUNT])
+		Console().ePopen('/bin/mount %s %s' % (SystemInfo["MultibootStartupDevice"], TMP_MOUNT))
 		for file in glob.glob('%s/STARTUP_*' % TMP_MOUNT):
 			print "Multiboot getMultibootslots file = %s " %file
 			slotnumber = file.rsplit('_', 3 if 'BOXMODE' in file else 1)[1]
@@ -47,7 +47,7 @@ def getMultibootslots():
 					bootslots[int(slotnumber)] = slot
 					print "Multiboot getMultibootslots slot = %s" %slot
 		print "Multiboot getMultibootslots bootslots = %s" %bootslots
-		postix.execute('/bin/umount', [TMP_MOUNT])
+		Console().ePopen('/bin/umount %s' % TMP_MOUNT)
 		if not os.path.ismount(TMP_MOUNT):
 			os.rmdir(TMP_MOUNT)
 	return bootslots
@@ -102,7 +102,7 @@ class GetImagelist():
 						pass
 					date = max(date, datetime.fromtimestamp(os.stat(os.path.join(target, "usr/bin/enigma2")).st_mtime).strftime('%Y-%m-%d'))
 				return "%s (%s)" % (open(os.path.join(target, "etc/issue")).readlines()[-2].capitalize().strip()[:-6], date)
-			imagedir = "/".join(filter(None, [TMP_MOUNT, SystemInfo["canMultiBoot"][self.slot].get('rootsubdir', '')]))
+			imagedir = os.sep.join(filter(None, [TMP_MOUNT, SystemInfo["canMultiBoot"][self.slot].get('rootsubdir', '')]))
 			if os.path.isfile('%s/usr/bin/enigma2' % imagedir):
 				self.imagelist[self.slot] = { 'imagename': getImagename(imagedir) }
 			else:
