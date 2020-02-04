@@ -83,7 +83,6 @@ class GetImagelist():
 	def __init__(self, callback):
 		if SystemInfo["canMultiBoot"]:
 			self.slots = SystemInfo["canMultiBoot"].keys()
-			print "Multiboot GetImagelist keyslots = %s" %self.slots
 			self.callback = callback
 			self.imagelist = {}
 			if not os.path.isdir(TMP_MOUNT):
