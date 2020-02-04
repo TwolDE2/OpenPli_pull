@@ -6,10 +6,10 @@ TMP_MOUNT = '/tmp/multibootcheck'
 
 def getMultibootStartupDevice(model):
 	for device in ('/dev/block/by-name/bootoptions', '/dev/block/by-name/bootoptions', "/dev/mmcblk1p1" if model in ('osmio4k', 'osmio4kplus', 'osmini4k') else "/dev/mmcblk0p1"):
-		print "Multiboot getMultibootStartupDevice = %s " %device
-		x = os.path.exists(device)
+		if model in ('sf8008', 'sf8008m'):
+			device = "/dev/mmcblk0p3"
 		if os.path.exists(device):
-			print "Multiboot getMultibootStartupDevice PATH is True? = %s%s " %(device, x)
+			print "Multiboot getMultibootStartupDevice %s" %(device)
 			return device
 
 def getparam(line, param):
@@ -32,18 +32,21 @@ def getMultibootslots():
 				for line in open(file).readlines():
 					print "Multiboot getMultibootslots readlines = %s " %line
 					if 'root=' in line:
-						print "Multiboot getMultibootslots root in line " 
+						line = line.rstrip('\n')
 						device = getparam(line, 'root')
-						print "Multiboot getMultibootslots device = %s " %device
 						if os.path.exists(device):
 							slot['device'] = device
 							slot['startupfile'] = os.path.basename(file).split('_BOXMODE')[0]
 							if 'rootsubdir' in line:
 								slot['rootsubdir'] = getparam(line, 'rootsubdir')
+								slot['kernel'] = getparam(line, 'kernel')
+							if "sda" in line:
+								slot['kernel'] = "sda%s" %line.split('sda', 1)[1].split(' ', 1)[0]
 						break
 				if slot:
 					bootslots[int(slotnumber)] = slot
-					print "Multiboot getMultibootslots bootslots = %s, slot = %s" %(bootslots, slot)
+					print "Multiboot getMultibootslots slot = %s" %slot
+		print "Multiboot getMultibootslots bootslots = %s" %bootslots
 		postix.execute('/bin/umount', [TMP_MOUNT])
 		if not os.path.ismount(TMP_MOUNT):
 			os.rmdir(TMP_MOUNT)
