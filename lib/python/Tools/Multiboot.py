@@ -41,7 +41,13 @@ def getMultibootslots():
 								slot['rootsubdir'] = getparam(line, 'rootsubdir')
 								slot['kernel'] = getparam(line, 'kernel')
 							if "sda" in line:
-								slot['kernel'] = "sda%s" %line.split('sda', 1)[1].split(' ', 1)[0]
+								slot['kernel'] = "/dev/sda%s" %line.split('sda', 1)[1].split(' ', 1)[0]
+							else:
+								mmc = device.split("p")[0]
+								num = int(device.split("p")[1])-1
+								print "Multiboot getMultibootslots mmc = %s num = %s " %(mmc, num)
+								slot['kernel'] = "%sp%s" %(device.split("p")[0], int(device.split("p")[1])-1)
+								
 						break
 				if slot:
 					bootslots[int(slotnumber)] = slot
@@ -73,6 +79,7 @@ class GetImagelist():
 	def __init__(self, callback):
 		if SystemInfo["canMultiBoot"]:
 			self.slots = SystemInfo["canMultiBoot"].keys()
+			print "Multiboot GetImagelist keyslots = %s" %self.slots
 			self.callback = callback
 			self.imagelist = {}
 			if not os.path.isdir(TMP_MOUNT):
@@ -103,6 +110,7 @@ class GetImagelist():
 					date = max(date, datetime.fromtimestamp(os.stat(os.path.join(target, "usr/bin/enigma2")).st_mtime).strftime('%Y-%m-%d'))
 				return "%s (%s)" % (open(os.path.join(target, "etc/issue")).readlines()[-2].capitalize().strip()[:-6], date)
 			imagedir = os.sep.join(filter(None, [TMP_MOUNT, SystemInfo["canMultiBoot"][self.slot].get('rootsubdir', '')]))
+			print "Multiboot GetImagelist imagedir = %s" %imagedir
 			if os.path.isfile('%s/usr/bin/enigma2' % imagedir):
 				self.imagelist[self.slot] = { 'imagename': getImagename(imagedir) }
 			else:
