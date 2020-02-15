@@ -22,14 +22,17 @@ def getparam(line, param):
 
 def getMultibootslots():
 	bootslots = {}
-	print "Multiboot getMultibootslots MultibootStartupDevice = %s " %SystemInfo["MultibootStartupDevice"]
+	mode12found = False
 	if SystemInfo["MultibootStartupDevice"]:
 		if not os.path.isdir(TMP_MOUNT):
 			os.mkdir(TMP_MOUNT)
 		Console().ePopen('/bin/mount %s %s' % (SystemInfo["MultibootStartupDevice"], TMP_MOUNT))
 		for file in glob.glob(os.path.join(TMP_MOUNT, 'STARTUP_*')):
-			slotnumber = file.rsplit('_', 3 if 'BOXMODE' in file else 1)[1]
-			print "Multiboot getMultibootslots slotnumber = %s " %slotnumber
+			if 'MODE_' in file:
+				mode12found = True
+				slotnumber = file.rsplit('_', 3)[1]
+			else:
+				slotnumber = file.rsplit('_', 1)[1]
 			if slotnumber.isdigit() and slotnumber not in bootslots:
 				slot = {}
 				for line in open(file).readlines():
@@ -39,7 +42,7 @@ def getMultibootslots():
 						device = getparam(line, 'root')
 						if os.path.exists(device):
 							slot['device'] = device
-							slot['startupfile'] = os.path.basename(file).split('_BOXMODE')[0]
+							slot['startupfile'] = os.path.basename(file).split('_BOXMODE')[0].split('_MODE')[0]
 							if 'rootsubdir' in line:
 								slot['rootsubdir'] = getparam(line, 'rootsubdir')
 								slot['kernel'] = getparam(line, 'kernel')
@@ -59,6 +62,10 @@ def getMultibootslots():
 		Console().ePopen('umount %s' % TMP_MOUNT)
 		if not os.path.ismount(TMP_MOUNT):
 			os.rmdir(TMP_MOUNT)
+		if not mode12found and SystemInfo["canMode12"]:
+			#the boot device has ancient content and does not contain the correct STARTUP files
+			for slot in range(1,5):
+				bootslots[slot] = { 'device': '/dev/mmcblk0p%s' % (slot * 2 + 1), 'startupfile': None}
 	print '[Multiboot] Bootslots found:', bootslots
 	return bootslots
 
