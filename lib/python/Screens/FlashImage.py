@@ -242,7 +242,7 @@ class FlashImage(Screen):
 
 			def findmedia(path):
 				def avail(path):
-					if not '/mmc' in path and os.path.isdir(path) and os.access(path, os.W_OK):
+					if not path.startswith('/mmc') and os.path.isdir(path) and os.access(path, os.W_OK):
 						try:
 							statvfs = os.statvfs(path)
 							return (statvfs.f_bavail * statvfs.f_frsize) / (1 << 20)
@@ -481,12 +481,12 @@ class MultibootSelection(SelectImage):
 				shutil.copyfile("/tmp/startupmount/STARTUP_RECOVERY", "/tmp/startupmount/STARTUP")
 			elif self.slot == "Android":
 				shutil.copyfile("/tmp/startupmount/STARTUP_ANDROID", "/tmp/startupmount/STARTUP")
-			elif SystemInfo["canMultiBoot"][self.slot]['startupfile']:
+			elif SystemInfo["canMultiBoot"][self.slot % 12]['startupfile']:
 				if SystemInfo["canMode12"]:
 					if self.slot < 12:
-						startupfile = "/tmp/startupmount/%s_BOXMODE_1" % SystemInfo["canMultiBoot"][self.slot]['startupfile']
+						startupfile = "/tmp/startupmount/%s_1" % SystemInfo["canMultiBoot"][self.slot]['startupfile'].rsplit('_', 1)[0]
 					else:
-						startupfile = "/tmp/startupmount/%s_BOXMODE_1" % SystemInfo["canMultiBoot"][self.slot - 12]['startupfile']
+						startupfile = "/tmp/startupmount/%s_12" % SystemInfo["canMultiBoot"][self.slot - 12]['startupfile'].rsplit('_', 1)[0]
 				else:
 					startupfile = "/tmp/startupmount/%s" % SystemInfo["canMultiBoot"][self.slot]['startupfile']
 				shutil.copyfile(startupfile, "/tmp/startupmount/STARTUP")
