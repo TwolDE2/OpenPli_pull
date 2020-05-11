@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-06 20:06+0200\n"
-"PO-Revision-Date: 2020-05-08 08:52+0200\n"
+"POT-Creation-Date: 2020-05-10 20:18+0200\n"
+"PO-Revision-Date: 2020-05-10 09:03+0200\n"
 "Last-Translator: Andrej Tobola <andrej.tobola@gmail.com>\n"
 "Language-Team: \n"
 "Language: sk\n"
@@ -221,9 +221,9 @@ msgstr "%d fps"
 #, python-format
 msgid "%d hour"
 msgid_plural "%d hours"
-msgstr[0] "%d hodina"
-msgstr[1] "%d hodiny"
-msgstr[2] "%d hodín"
+msgstr[0] "%d hodine"
+msgstr[1] "%d hodinách"
+msgstr[2] "%d hodinách"
 
 #, python-format
 msgid "%d job is running in the background!"
@@ -1056,6 +1056,10 @@ msgstr "Akákoľvek aktivita"
 msgid "Arabic"
 msgstr "Arabčina"
 
+#, fuzzy
+msgid "Are you sure to delete image:"
+msgstr "Naozaj chcete reštartovať"
+
 msgid "Are you sure to purge all deleted user bouquets?"
 msgstr "Naozaj chcete natrvalo odstrániť všetky zmazané zoznamy staníc?"
 
@@ -1074,6 +1078,10 @@ msgstr "Naozaj chcete odstrániť všetky stanice pozemnej televízie?"
 
 msgid "Are you sure to remove this entry?"
 msgstr "Naozaj chcete odstrániť túto položku?"
+
+#, fuzzy
+msgid "Are you sure to restore all deleted images"
+msgstr "Naozaj chcete odstrániť všetky stanice káblovej televízie?"
 
 msgid ""
 "Are you sure you want to activate this network configuration?\n"
@@ -2650,6 +2658,10 @@ msgstr "Oneskorenie v milisekundách medzi posúvajúcimi sa znakmi na displeji.
 msgid "Delete"
 msgstr "Vymazať"
 
+#, fuzzy
+msgid "Delete Image"
+msgstr "Vymazať image"
+
 msgid "Delete entry"
 msgstr "Vymazať zadanie"
 
@@ -2682,6 +2694,10 @@ msgstr "Zmazať časovač"
 
 msgid "Deleted"
 msgstr "Zmazané"
+
+#, fuzzy
+msgid "Deleted image"
+msgstr "Vymazať image"
 
 msgid "Deleted items"
 msgstr "Zmazané položky"
@@ -3280,10 +3296,10 @@ msgid "End time"
 msgstr "Čas ukončenia"
 
 msgid "End time to ignore inactivity sleeptimer"
-msgstr "Konečný čas ignorovania časovača prechodu do úsporného režimu"
+msgstr "Koniec ignorovania časovača pri neaktivite"
 
 msgid "End time to ignore shutdown in standby"
-msgstr "Konečný čas ignorovania vypnutia prijímača v úspornom režime"
+msgstr "Koniec ignorovania vypnutia v pohotovostnom režime"
 
 msgid "English"
 msgstr "Angličtina"
@@ -5309,7 +5325,7 @@ msgid "Network ID"
 msgstr "ID siete"
 
 msgid "Network Info:"
-msgstr "Info siete:"
+msgstr "Informácie o sieti:"
 
 msgid "Network configuration"
 msgstr "Nastavenie siete"
@@ -6867,6 +6883,10 @@ msgstr "Obnoviť zálohy"
 msgid "Restore defaults"
 msgstr "Obnoviť predvolené"
 
+#, fuzzy
+msgid "Restore deleted images"
+msgstr "Obnoviť zmazané užívateľské zoznamy staníc"
+
 msgid "Restore deleted user bouquets"
 msgstr "Obnoviť zmazané užívateľské zoznamy staníc"
 
@@ -6901,9 +6921,6 @@ msgstr "Pokračujem v prehrávaní"
 
 msgid "Retrieving image list - Please wait..."
 msgstr "Načítavanie dostupného softvéru - prosím čakajte..."
-
-msgid "Retrieving image slots - Please wait..."
-msgstr "Načítavam sloty image - Prosím čakajte..."
 
 msgid "Return to movie list"
 msgstr "Návrat do zoznamu filmov"
@@ -8348,7 +8365,7 @@ msgid "Specify timeframe to ignore inactivity sleeptimer"
 msgstr "Časové rozpätie ignorovania pri neaktivite"
 
 msgid "Specify timeframe to ignore the shutdown in standby"
-msgstr "Zadajte časový rámec ignorovania vypnutia v pohotovostnom režime"
+msgstr "Nastaviť čas ignorovania vypnutia prijímača v pohotovostnom režime"
 
 msgid "Split preview mode"
 msgstr "Rozdeliť režim náhľadu"
@@ -8389,7 +8406,7 @@ msgid "Standby fan %d voltage"
 msgstr "Pohotovosť, napätie ventilátora %d"
 
 msgid "Standby in "
-msgstr "Pohotovostný režim za "
+msgstr "Pohotovostný režim po "
 
 msgid "Start directory"
 msgstr "Počiatočný adresár"
@@ -8416,10 +8433,10 @@ msgid "Start time"
 msgstr "Začiatok"
 
 msgid "Start time to ignore inactivity sleeptimer"
-msgstr "Začiatok ignorovania časovača pri naktivite"
+msgstr "Začiatok ignorovania časovača pri neaktivite"
 
 msgid "Start time to ignore shutdown in standby"
-msgstr "Koniec ignorovania časovača pri naktivite"
+msgstr "Začiatok ignorovania vypnutia v pohotovostnom režime"
 
 msgid "Start timeshift"
 msgstr "Spustiť časový posun"
