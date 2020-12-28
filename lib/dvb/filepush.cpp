@@ -12,7 +12,7 @@ DEFINE_REF(eFilePushThread);
 
 static void global_signal_SIGUSR1_handler(int x)
 {
-	eWarning("signal SIGUSR1 caught\n");
+	eDebug("signal SIGUSR1 caught");
 }
 
 eFilePushThread::eFilePushThread(int blocksize, size_t buffersize):
@@ -39,15 +39,6 @@ eFilePushThread::~eFilePushThread()
 
 void eFilePushThread::thread()
 {
-	struct sigaction action;
-
-	/* we set the signal to not restart syscalls, so we can detect our signal.
-	 * SIGUSR1 is used to signal stopping from the parent thread */
-
-	action.sa_handler = global_signal_SIGUSR1_handler;
-	action.sa_flags = 0;
-	sigaction(SIGUSR1, &action, 0);
-
 	hasStarted(); /* "start()" blocks until we get here */
 	setIoPrio(IOPRIO_CLASS_BE, 0);
 	eDebug("[eFilePushThread] START thread");
@@ -339,22 +330,12 @@ eFilePushThreadRecorder::eFilePushThreadRecorder(unsigned char* buffer, size_t b
 void eFilePushThreadRecorder::thread()
 {
 	struct pollfd pfd;
-	struct timespec timeout;
-	sigset_t sigset;
 	int result;
 	int bytes;
 
 	setIoPrio(IOPRIO_CLASS_RT, 7);
 
 	eDebug("[eFilePushThreadRecorder] THREAD START");
-
-	/* block SIGUSR1 in this thread so it's delayed until the ppoll()
-	 * call where it will be handled. ppoll() will lift the block
-	 * momentarily and atomically, preventing a race condition */
-
-	sigemptyset(&sigset);
-	sigaddset(&sigset, SIGUSR1);
-	sigprocmask(SIG_BLOCK, &sigset, (sigset_t *)0);
 
 	hasStarted();
 
@@ -368,32 +349,43 @@ void eFilePushThreadRecorder::thread()
 		pfd.fd = m_fd_source;
 		pfd.events = POLLIN;
 		pfd.revents = 0;
-		timeout.tv_sec = 0;
-		timeout.tv_nsec = 100 * 1000000;
-		sigemptyset(&sigset);
 
-		/* this ppoll call will all of: 1) enforce a short delay if there is nothing to be read
-		 * (see above comment), 2) check if something actually can be read without blocking and
-		 * 3) check whether a SIGUSR1 is pending.
-		 * This is required to prevent a race condition leading to a deadlock, where a signal
-		 * is sent by the parent, the signal is consumed by the call to poll() and so it
-		 * doesn't interrupt the read call, which will never complete. */
-
-		result = ppoll(&pfd, 1, &timeout, &sigset);
-
-		if((result < 0) && (errno == EINTR))
-			continue; /* this will test m_stop immediately -> while(!m_stop) */
+		result = poll(&pfd, 1, 100);
 
 		if(result < 0)
-			bytes = result;
+		{
+			if(errno == EINTR)
+				continue; /* caught an SIGUSR1 interrupt; continue, this will test m_stop immediately -> while(!m_stop) */
+
+			bytes = result; /* poll failed; this is unlikely, handle like read() returned the error */
+		}
 		else
 		{
-			if(result == 1)
-				bytes = ::read(m_fd_source, m_buffer, m_buffersize);
-			else
+			if(result == 0) /* nothing happened, try again, handle like read() return EAGAIN */
 			{
 				errno = EAGAIN;
 				bytes = -1;
+			}
+			else
+			{
+				if(result == 1)
+				{
+					if(pfd.revents & POLLIN) /* something really happened, we can read */
+						bytes = ::read(m_fd_source, m_buffer, m_buffersize);
+					else /* an error occured on the fd, don't read it and stop or abort whatever is applicable */
+					{
+						if(m_stop)
+							errno = EAGAIN; /* stop after SIGUSR1 */
+						else
+							errno = EINVAL; /* abort after actual error */
+						bytes = -1;
+					}
+				}
+				else /* catch-all, shouldn't happen */
+				{
+					errno = EINVAL;
+					bytes = -1;
+				}
 			}
 		}
 
